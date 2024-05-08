@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign-Up Sheet</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  fieldset {
+    margin-bottom: 20px;
+  }
+  legend {
+    font-weight: bold;
+  }
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: green;
+  }
+  input[type="text"]:invalid,
+  input[type="email"]:invalid,
+  textarea:invalid,
+  select:invalid {
+    border-color: red;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+  button[type="reset"] {
+    background-color: #f44336;
+  }
+  button[type="reset"]:hover {
+    background-color: #da190b;
+  }
+</style>
+</head>
+<body>
+
+<form id="signup-form">
+  <fieldset>
+    <legend>Sign-Up</legend>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="username">Preferred Username:</label>
+    <input type="text" id="username" name="username" required>
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="prefer not to mention">Prefer not to mention</option>
+    </select>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required>
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" rows="3" required></textarea>
+    <label for="interests">Interests:</label>
+    <textarea id="interests" name="interests" rows="3"></textarea>
+  </fieldset>
+  <button type="submit">Submit</button>
+  <button type="reset">Reset</button>
+</form>
+
+<div id="output"></div>
+
+<script>
+  const form = document.getElementById('signup-form');
+  const outputDiv = document.getElementById('output');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(form);
+    let outputHTML = '<h2>Submitted Information:</h2>';
+    for (const [key, value] of formData.entries()) {
+      outputHTML += `<p><strong>${key}:</strong> ${value}</p>`;
+    }
+    outputDiv.innerHTML = outputHTML;
+  });
+
+  form.addEventListener('reset', function() {
+    outputDiv.innerHTML = '';
+  });
+
+  const inputs = form.querySelectorAll('input, textarea, select');
+  inputs.forEach(input => {
+    input.addEventListener('blur', function() {
+      if (input.value.trim() === '') {
+        input.style.borderColor = 'red';
+      } else {
+        input.style.borderColor = 'green';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
