@@ -61,9 +61,36 @@
     border-color: #FFB6C1;
   }
   input[type="radio"] {
+    display: none;
+  }
+  .radio-label {
+    position: relative;
     display: inline-block;
-    margin-right: 5px;
-    vertical-align: middle;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+  .radio-label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .radio-label:before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: background-color 0.3s;
+  }
+  .radio-label:hover:before {
+    background-color: #f9f9f9;
+  }
+  .radio-label input[type="radio"]:checked + .radio-custom:before {
+    background-color: #FFB6C1;
   }
   button {
     background-color: #FFB6C1;
@@ -99,15 +126,15 @@
     <label for="username">Preferred Username:</label>
     <input type="text" id="username" name="username" required>
     <label>Sex:</label>
-    <div>
+    <div class="radio-label">
       <input type="radio" id="male" name="sex" value="male" required>
       <label for="male">Male</label>
     </div>
-    <div>
+    <div class="radio-label">
       <input type="radio" id="female" name="sex" value="female" required>
       <label for="female">Female</label>
     </div>
-    <div>
+    <div class="radio-label">
       <input type="radio" id="prefer-not" name="sex" value="prefer not to mention" required>
       <label for="prefer-not">Prefer not to mention</label>
     </div>
