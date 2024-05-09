@@ -6,8 +6,8 @@
 <title>Sign-Up Sheet</title>
 <style>
   body {
-    font-family: Arial, sans-serif;
-    background-color: #f9e6e6;
+    font-family: "Times New Roman", Times, serif;
+    background-color: #FFB6C1;
     margin: 0;
     padding: 0;
     display: flex;
@@ -52,16 +52,16 @@
   input[type="email"]:focus,
   textarea:focus,
   select:focus {
-    border-color: #ff85a2;
+    border-color: #FFB6C1;
   }
   input[type="text"]:invalid,
   input[type="email"]:invalid,
   textarea:invalid,
   select:invalid {
-    border-color: #ff0039;
+    border-color: #FFB6C1;
   }
   button {
-    background-color: #ff85a2;
+    background-color: #FFB6C1;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -70,14 +70,14 @@
     margin-top: 10px;
   }
   button:hover {
-    background-color: #ff5c7a;
+    background-color: #FFB6C1;
   }
   button[type="reset"] {
-    background-color: #ff0039;
+    background-color: #FFB6C1;
     margin-left: 10px;
   }
   button[type="reset"]:hover {
-    background-color: #cc002e;
+    background-color: #FFB6C1;
   }
   #output {
     margin-top: 20px;
@@ -93,8 +93,8 @@
     <input type="text" id="name" name="name" required>
     <label for="username">Preferred Username:</label>
     <input type="text" id="username" name="username" required>
-    <label for="gender">Gender:</label>
-    <select id="gender" name="gender">
+    <label for="sex">Sex:</label>
+    <select id="sex" name="sex" multiple required>
       <option value="male">Male</option>
       <option value="female">Female</option>
       <option value="prefer not to mention">Prefer not to mention</option>
@@ -108,7 +108,7 @@
     <label for="interests">Interests:</label>
     <textarea id="interests" name="interests" rows="3"></textarea>
   </fieldset>
-  <button type="submit">Submit</button>
+  <button type="submit">Sign Up</button>
   <button type="reset">Reset</button>
 </form>
 
