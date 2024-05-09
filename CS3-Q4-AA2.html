@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sign-Up Form</title>
+<title>Sign-Up Sheet</title>
 <style>
   body {
     font-family: "Times New Roman", Times, serif;
@@ -63,11 +63,17 @@
   input[type="radio"] {
     display: none;
   }
+  .radio-group {
+    display: flex;
+    align-items: center;
+  }
   .radio-label {
-    position: relative;
     display: inline-block;
+    position: relative;
+    padding-left: 25px;
     margin-right: 15px;
     cursor: pointer;
+    line-height: 20px;
   }
   .radio-label input[type="radio"] {
     position: absolute;
@@ -77,8 +83,9 @@
   .radio-label:before {
     content: '';
     position: absolute;
-    top: 1px;
+    top: 50%;
     left: 0;
+    transform: translateY(-50%);
     width: 15px;
     height: 15px;
     border: 1px solid #ccc;
@@ -126,17 +133,19 @@
     <label for="username">Preferred Username:</label>
     <input type="text" id="username" name="username" required>
     <label>Sex:</label>
-    <div class="radio-label">
-      <input type="radio" id="male" name="sex" value="male" required>
-      <label for="male">Male</label>
-    </div>
-    <div class="radio-label">
-      <input type="radio" id="female" name="sex" value="female" required>
-      <label for="female">Female</label>
-    </div>
-    <div class="radio-label">
-      <input type="radio" id="prefer-not" name="sex" value="prefer not to mention" required>
-      <label for="prefer-not">Prefer not to mention</label>
+    <div class="radio-group">
+      <label class="radio-label" for="male">
+        <input type="radio" id="male" name="sex" value="male" required>
+        Male
+      </label>
+      <label class="radio-label" for="female">
+        <input type="radio" id="female" name="sex" value="female" required>
+        Female
+      </label>
+      <label class="radio-label" for="prefer-not">
+        <input type="radio" id="prefer-not" name="sex" value="prefer not to mention" required>
+        Prefer not to mention
+      </label>
     </div>
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required>
