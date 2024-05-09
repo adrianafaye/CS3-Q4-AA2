@@ -21,6 +21,7 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 400px;
+    position: relative;
   }
   fieldset {
     border: none;
@@ -120,6 +121,10 @@
   }
   #output {
     margin-top: 20px;
+    background-color: #FFB6C1;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
   }
 </style>
 </head>
@@ -171,13 +176,15 @@
     const formData = new FormData(form);
     let outputHTML = '<h2>Submitted Information:</h2>';
     for (const [key, value] of formData.entries()) {
-      outputHTML += `<p><strong>${key}:</strong> ${value}</p>`;
+      outputHTML += `<p><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${value}</p>`;
     }
     outputDiv.innerHTML = outputHTML;
+    outputDiv.style.display = 'block';
   });
 
   form.addEventListener('reset', function() {
     outputDiv.innerHTML = '';
+    outputDiv.style.display = 'none';
   });
 
   const inputs = form.querySelectorAll('input, textarea');
