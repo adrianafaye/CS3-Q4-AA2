@@ -39,7 +39,7 @@
   input[type="text"],
   input[type="email"],
   textarea,
-  select {
+  input[type="password"] {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
@@ -51,14 +51,17 @@
   input[type="text"]:focus,
   input[type="email"]:focus,
   textarea:focus,
-  select:focus {
+  input[type="password"]:focus {
     border-color: #FFB6C1;
   }
   input[type="text"]:invalid,
   input[type="email"]:invalid,
   textarea:invalid,
-  select:invalid {
+  input[type="password"]:invalid {
     border-color: #FFB6C1;
+  }
+  input[type="radio"] {
+    margin-right: 5px;
   }
   button {
     background-color: #FFB6C1;
@@ -93,12 +96,19 @@
     <input type="text" id="name" name="name" required>
     <label for="username">Preferred Username:</label>
     <input type="text" id="username" name="username" required>
-    <label for="sex">Sex:</label>
-    <select id="sex" name="sex" multiple required>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-      <option value="prefer not to mention">Prefer not to mention</option>
-    </select>
+    <label>Sex:</label>
+    <div>
+      <input type="radio" id="male" name="sex" value="male" required>
+      <label for="male">Male</label>
+    </div>
+    <div>
+      <input type="radio" id="female" name="sex" value="female" required>
+      <label for="female">Female</label>
+    </div>
+    <div>
+      <input type="radio" id="prefer-not" name="sex" value="prefer not to mention" required>
+      <label for="prefer-not">Prefer not to mention</label>
+    </div>
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required>
     <label for="email">Email Address:</label>
@@ -132,7 +142,7 @@
     outputDiv.innerHTML = '';
   });
 
-  const inputs = form.querySelectorAll('input, textarea, select');
+  const inputs = form.querySelectorAll('input, textarea');
   inputs.forEach(input => {
     input.addEventListener('blur', function() {
       if (input.value.trim() === '') {
